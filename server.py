@@ -1,4 +1,4 @@
-from flask import Flask, request, redirect, session, flash
+from flask import Flask, render_template, request, redirect, session, flash
 app = Flask(__name__)
 app.secret_key = "unicorns"
 
@@ -10,15 +10,10 @@ app.secret_key = "unicorns"
 
 @app.route('/') 
 def index(): 
-    
-
-
-    if "info" not in session:
-        session['info'] = ""
-    else:
-        for x in session['info']:
-            if x == "pizza":
-                x = "pumkin pie"
+    if "info" in session:
+        print session['info']
+        if session['info'] == "pizza":
+            session['info'] = "pumkin pie"
     ##########################
     #Important!
     #Fix the above code.....
@@ -28,15 +23,18 @@ def index():
     return render_template("index.html", info = session['info'])
 
 
-@app.route("/form")
+@app.route("/form", methods=["POST"])
 def form():
-    
-    if len(request.form['FirstName']) < 1 or len(request.form['Last_Name']) < 1:
-        flash("Please Complete Form")
+    # print request.form['FaveSnack']
+    # print request.form['FirstName']
+    # print request.form['LastName']
+    # print len(request.form['FirstName'])
+    # print len(request.form['LastName'])
+    if len(request.form['FirstName']) < 1 or len(request.form['LastName']) < 1:
+        flash("please fillout form")
     else:
-        session['info'] = [request.form["FirstName"], request.form['Last_Name'], request.form['FaveSnack']]
-
-
+        session['info'] = request.form['FaveSnack']
+# [request.form["FirstName"], request.form['Last_Name']
     return redirect('/')
 
 
