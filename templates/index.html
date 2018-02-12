@@ -8,10 +8,7 @@
 </head>
 <body>
     <h1>Flask Debug Quiz</h1>
-    
-    
-    
-    
+
     {% with messages = get_flashed_messages() %}
     {% if messages %}
     {% for message in messages %}
@@ -35,7 +32,7 @@
             <tr>
                 
                 <td>
-                    <button>Submit</button>
+                    <input type="submit" value='Submit'>
                     
                 </td>
                 
