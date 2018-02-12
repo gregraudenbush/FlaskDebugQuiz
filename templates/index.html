@@ -44,7 +44,11 @@
         </form>
         
     </table>
-    <h3>{{info}}</h3>
+    <h3>
+    {% for inf in info %}
+        {{inf + " "}}
+    {% endfor %}
+    </h3>
     
 </body>
 </html>
