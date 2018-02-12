@@ -19,6 +19,7 @@ def index():
         for x in session['info']:
             if x == "pizza":
                 x = "pumkin pie"
+                y= "applie pie"
     ##########################
     #Important!
     #Fix the above code.....
