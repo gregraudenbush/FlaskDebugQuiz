@@ -13,9 +13,9 @@ def index():
     if "info" not in session:
         session['info'] = ""
     else:
-        for x in session['info']:
-            if x =='pizza':
-                x = 'Pumpkin pie'
+        for x in range(0,len(session['info'])):
+            if session['info'][x] == 'pizza':
+                session['info'][x] = 'pumpkin pie'
     ##########################
     #Important!
     #Fix the above code.....
