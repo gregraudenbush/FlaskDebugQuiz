@@ -13,11 +13,11 @@
     
     
     {% with messages = get_flashed_messages() %}
-    {% if messages %}
-    {% for message in messages %}
-    <p style="color: red">{{message}}</p>
-    {% endfor %}
-    {% endif %}
+        {% if messages %}
+            {% for message in messages %}
+                <p style="color: red">{{message}}</p>
+            {% endfor %}
+        {% endif %}
     {% endwith %}
     
     <h2>Please enter your name</h2>
@@ -44,7 +44,7 @@
         </form>
         
     </table>
-    <h3>{{info}}</h3>
+    <h3>{{session['info']}}</h3>
     
 </body>
 </html>
