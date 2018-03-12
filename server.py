@@ -1,4 +1,4 @@
-from flask import Flask, request, redirect, session, flash
+from flask import (Flask, request, redirect, session, flash, render_template, url_for)
 app = Flask(__name__)
 app.secret_key = "unicorns"
 
@@ -10,32 +10,30 @@ app.secret_key = "unicorns"
 
 @app.route('/') 
 def index(): 
-    
-
 
     if "info" not in session:
         session['info'] = ""
     else:
-        for x in session['info']:
-            if x == "pizza":
-                x = "pumkin pie"
+        for x in range(0, len(session['info'])):
+            if session['info'][x] == "pizza":
+                session['info'][x] = 'pumkin pie'
     ##########################
     #Important!
     #Fix the above code.....
     # Session['info'] should display "pumkin pie" and NOT "pizza"
     #########################
     
-    return render_template("index.html", info = session['info'])
+    return render_template("index.html", info=session['info'])
 
 
-@app.route("/form")
+@app.route("/form", methods=['POST'])
 def form():
     
-    if len(request.form['FirstName']) < 1 or len(request.form['Last_Name']) < 1:
+    if len(request.form['FirstName']) <= 0 or len(request.form['LastName']) <= 0:
         flash("Please Complete Form")
     else:
-        session['info'] = [request.form["FirstName"], request.form['Last_Name'], request.form['FaveSnack']]
-
+        session['info'] = [request.form["FirstName"], request.form['LastName'], request.form['FaveSnack']]
+        return render_template('index.html', form=request.form)
 
     return redirect('/')
 
