@@ -27,6 +27,7 @@ def index():
     # Session['info'] should display "pumkin pie" and NOT "pizza"
 
     #Change made in index.html
+    
     ############################
     
     return render_template("index.html", info = session['info'])
