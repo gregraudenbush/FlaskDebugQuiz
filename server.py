@@ -10,14 +10,14 @@ app.secret_key = "unicorns"
 ####################
 
 
-@app.route('/', methods=['GET'])
+@app.route('/')
 def index():
     if "info" not in session:
         session['info'] = ""
     else:
         for x in session['info']:
             if x == "pizza":
-                x.form = "pumkin pie"
+                x = "pumpkin pie"
     ##########################
     #Important!
     #Fix the above code.....
@@ -27,13 +27,16 @@ def index():
     return render_template("index.html", info=session['info'])
 
 
-@app.route("/form")
+@app.route("/form", methods=['post'])
 def forms():
     if len(request.form['FirstName']) < 1 or len(request.form['LastName']) < 1:
         flash("Please Complete Form")
     else:
-        session['info'] = [request.form["FirstName"], request.form['Last_Name'], request.form['FaveSnack']]
+        session['info'] = [str(request.form["FirstName"]), str(request.form['LastName']), str(request.form['FaveSnack'])]
+        session['info'].pop()
+        session['info'].append(str('Pumpkin Pie'))
         flash(session['info'])
+        
     return redirect('/')
 
 
