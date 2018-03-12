@@ -9,42 +9,34 @@
 <body>
     <h1>Flask Debug Quiz</h1>
     
-    
-    
-    
     {% with messages = get_flashed_messages() %}
-    {% if messages %}
-    {% for message in messages %}
-    <p style="color: red">{{message}}</p>
-    {% endfor %}
-    {% endif %}
+        {% if messages %}
+            {% for message in messages %}
+                <p style="color: red">{{message}}</p>
+            {% endfor %}
+        {% endif %}
     {% endwith %}
     
     <h2>Please enter your name</h2>
     <table>
         <form action="/form" method="post">
             <tr>
-                <td>First Name</td><td><input type="text" name="FirstName"></td>
+                <td>First Name</td>
+                <td><input type="text" name="FirstName"></td>
             </tr>
             <tr>
-                <td>Last Name</td><td><input type="text" name="LastName"></td>
+                <td>Last Name</td>
+                <td><input type="text" name="LastName"></td>
             </tr> 
             <tr>
                 <td><input type="hidden" name="FaveSnack" value="pizza"></td>
             </tr>         
             <tr>
-                
-                <td>
-                    <button>Submit</button>
-                    
-                </td>
-                
+                <td><input type='submit' value='Submit'></td>
             </tr>        
-            
         </form>
-        
     </table>
-    <h3>{{info}}</h3>
+    <h3>{{ session['info'] }}</h3>
     
 </body>
 </html>
