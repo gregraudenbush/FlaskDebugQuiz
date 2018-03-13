@@ -1,4 +1,4 @@
-from flask import Flask, request, redirect, session, flash
+from flask import Flask, request, redirect, session, flash, render_template
 app = Flask(__name__)
 app.secret_key = "unicorns"
 
@@ -31,10 +31,10 @@ def index():
 @app.route("/form")
 def form():
     
-    if len(request.form['FirstName']) < 1 or len(request.form['Last_Name']) < 1:
+    if len(request.form['FirstName']) < 1 or len(request.form['LastName']) < 1:
         flash("Please Complete Form")
     else:
-        session['info'] = [request.form["FirstName"], request.form['Last_Name'], request.form['FaveSnack']]
+        session['info'] = [request.form["FirstName"], request.form['LastName'], request.form['FaveSnack']]
 
 
     return redirect('/')
