@@ -20,27 +20,29 @@
     {% endif %}
     {% endwith %}
     
+
     <h2>Please enter your name</h2>
+
     <table>
         <form action="/form" method="post">
+
             <tr>
                 <td>First Name</td><td><input type="text" name="FirstName"></td>
             </tr>
+
             <tr>
                 <td>Last Name</td><td><input type="text" name="LastName"></td>
             </tr> 
+
             <tr>
                 <td><input type="hidden" name="FaveSnack" value="pizza"></td>
-            </tr>         
+            </tr>  
+
             <tr>
-                
                 <td>
                     <button>Submit</button>
-                    
-                </td>
-                
-            </tr>        
-            
+                </td>                
+            </tr>                   
         </form>
         
     </table>
