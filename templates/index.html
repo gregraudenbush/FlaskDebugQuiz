@@ -7,11 +7,7 @@
     <title>Flask Demo</title>
 </head>
 <body>
-    <h1>Flask Debug Quiz</h1>
-    
-    
-    
-    
+    <h1>Flask Debug Quiz</h1>    
     {% with messages = get_flashed_messages() %}
     {% if messages %}
     {% for message in messages %}
@@ -22,15 +18,15 @@
     
     <h2>Please enter your name</h2>
     <table>
-        <form action="/form" method="post">
+        <form action="/form" method='post'>
             <tr>
-                <td>First Name</td><td><input type="text" name="FirstName"></td>
+                <td>First Name</td><td><input type="text" name="FirstName">{{FirstName}}</td>
             </tr>
             <tr>
-                <td>Last Name</td><td><input type="text" name="LastName"></td>
+                <td>Last Name</td><td><input type="text" name="Last_Name">{{LastName}}</td>
             </tr> 
             <tr>
-                <td><input type="hidden" name="FaveSnack" value="pizza"></td>
+                <td><input type="hidden" name="FaveSnack" value="pizza">{{FaveSnack}}</td>
             </tr>         
             <tr>
                 
